@@ -187,7 +187,7 @@ export default async function ReviewsPage({
                   {filtered.length !== all.length ? (
                     <span className="text-[var(--color-ink-3)]">
                       {" "}
-                      von {reviewCountLabel(all.length).toLowerCase()}
+                      von {reviewCountLabel(all.length)}
                     </span>
                   ) : null}
                 </p>

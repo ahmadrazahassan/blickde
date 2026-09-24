@@ -684,3 +684,54 @@ export async function getSiteFigures(): Promise<{
     lastCheckedAt: dates.sort().at(-1) ?? "",
   };
 }
+
+/* ==========================================================================
+   Review corpus facts, for the methodology page
+   ========================================================================== */
+
+export interface ReviewCorpusFacts {
+  published: number;
+  products: number;
+  oldest: string | null;
+  newest: string | null;
+  max: number;
+  min: number;
+  verified: number;
+  pending: number;
+}
+
+/**
+ * The shape of the published corpus, aggregated in the database.
+ *
+ * Counting these rows in the application meant fetching them, and PostgREST
+ * caps a plain select at 1000 rows, so the methodology page printed "1.000
+ * Bewertungen zu 28 Programmen" for a corpus of 1442 across 30. The page whose
+ * job is to let a reader check the numbers is the last place that may carry a
+ * truncated one, so the aggregate is computed by review_corpus_facts().
+ */
+export const getReviewCorpusFacts = cache(async (): Promise<ReviewCorpusFacts> => {
+  const { data, error } = await publicClient().rpc("review_corpus_facts").single();
+  fail("review_corpus_facts", error);
+
+  const row = (data ?? {}) as {
+    published?: number;
+    products?: number;
+    oldest?: string | null;
+    newest?: string | null;
+    max_per_product?: number;
+    min_per_product?: number;
+    verified?: number;
+    pending?: number;
+  };
+
+  return {
+    published: row.published ?? 0,
+    products: row.products ?? 0,
+    oldest: row.oldest ? row.oldest.slice(0, 10) : null,
+    newest: row.newest ? row.newest.slice(0, 10) : null,
+    max: row.max_per_product ?? 0,
+    min: row.min_per_product ?? 0,
+    verified: row.verified ?? 0,
+    pending: row.pending ?? 0,
+  };
+});

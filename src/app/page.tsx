@@ -63,11 +63,6 @@ export default async function HomePage() {
     const rankB = homepageOrder.indexOf(b.slug);
     return (rankA < 0 ? 999 : rankA) - (rankB < 0 ? 999 : rankB);
   });
-  const sageSpotlight = ["sage-active", "sage-hr"]
-    .map((slug) => allSoftware.find((item) => item.slug === slug))
-    .filter((item): item is NonNullable<typeof item> => item !== undefined)
-    .filter((item) => item.review_count > 0 && !topRated.some((rated) => rated.id === item.id));
-
   return (
     <>
       {/* ==================================================== 1. Hero ==== */}
@@ -217,13 +212,6 @@ export default async function HomePage() {
               ))}
             </ul>
           )}
-
-          {sageSpotlight.length > 0 ? (
-            <div className="mx-auto mt-10 max-w-[70rem] border-t border-[var(--color-rule)] pt-8">
-              <div className="text-center"><p className="t-micro text-[var(--color-primary)]">Weitere Nutzerstimmen</p><h3 className="mt-3 text-[21px] font-semibold text-[var(--color-ink)]">Sage Programme im Blick</h3><p className="mx-auto mt-2 max-w-[58ch] text-[13px] leading-[1.6] text-[var(--color-ink-3)]">Diese Programme zeigen wir ergänzend. Ihre Noten und Bewertungszahlen stammen ebenfalls aus veröffentlichten Nutzerbewertungen.</p></div>
-              <ul className="mx-auto mt-6 grid max-w-[35rem] gap-5 sm:max-w-none sm:grid-cols-2 lg:max-w-[35rem] lg:grid-cols-2">{sageSpotlight.map((item) => <li key={item.id}><TopRatedCard item={item} /></li>)}</ul>
-            </div>
-          ) : null}
 
           <div className="mt-12 flex justify-center">
             <ButtonLink href="/software?sortierung=note" variant="secondary" size="lg">

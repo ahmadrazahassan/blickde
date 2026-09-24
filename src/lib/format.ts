@@ -12,7 +12,14 @@ const integer = new Intl.NumberFormat("de-DE", {
   maximumFractionDigits: 0,
 });
 
-const reviewInteger = new Intl.NumberFormat("en-US", {
+/*
+ * German, like every other number on this site.
+ *
+ * This used to be en-US, which printed "3,913". In German a comma is the
+ * decimal separator, so that reads as three point nine — on a site whose whole
+ * claim is German-market expertise, in the hero and the stats rail.
+ */
+const reviewInteger = new Intl.NumberFormat("de-DE", {
   maximumFractionDigits: 0,
 });
 

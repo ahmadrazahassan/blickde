@@ -8,7 +8,7 @@ const columns = [
   { title: "Software", links: [["Alle Programme", "/software"], ["Buchhaltung", "/kategorie/buchhaltungssoftware"], ["Lohnabrechnung", "/kategorie/lohnabrechnung"], ["HR-Software", "/kategorie/hr-software"]] },
   { title: "Vergleichen", links: [["Direktvergleich", "/vergleich"], ["Kategorien", "/kategorien"], ["Bestbewertet", "/software?sortierung=note"], ["Software eintragen", "/software-eintragen"]] },
   { title: "Wissen", links: [["Ratgeber", "/ratgeber"], ["Glossar", "/glossar"], ["E-Rechnung", "/e-rechnung"], ["Newsletter", "/newsletter"]] },
-  { title: "Softwareblick", links: [["Über uns", "/ueber-uns"], ["Redaktion", "/redaktionsrichtlinien"], ["Kontakt", "/kontakt"], ["Presse", "/presse"]] },
+  { title: "Softwareblick", links: [["Über uns", "/ueber-uns"], ["Redaktion", "/redaktionsrichtlinien"], ["Bewertungsmethodik", "/bewertungsmethodik"], ["Kontakt", "/kontakt"], ["Presse", "/presse"]] },
 ] as const;
 
 export async function Footer() {

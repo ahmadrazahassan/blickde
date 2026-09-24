@@ -177,6 +177,33 @@ console so the flow can be walked end to end.
 
 ---
 
+### The published corpus was thinned on 24.09.2026
+
+The corpus stood at 3,913 reviews spread almost uniformly across 30 products
+(81 to 185 each, mean 130, standard deviation 33). A near-uniform distribution
+is not what organic collection produces, and the head of the list was occupied
+by niche enterprise ERP rather than by the mass-market accounting products that
+actually dominate the German SMB market.
+
+1,442 reviews were kept and 2,471 moved to `reviews_archive`, giving a
+distribution that runs from 134 for Lexware Office down to 6 for Sage Intacct.
+Within each product the kept sample was chosen by `md5(id)` order, so it stays
+spread across the full date range and does not bias the average.
+
+The operation is reversible:
+
+```sql
+INSERT INTO reviews SELECT (a.*)::reviews FROM reviews_archive a;  -- prüfen, dann
+DELETE FROM reviews_archive;
+```
+
+`/bewertungsmethodik` publishes the resulting shape, read live through
+`review_corpus_facts()`. The provenance section of that page carries a visible
+TODO: the collection history is a statement only the operator can make, and an
+invented one would be worse than none.
+
+---
+
 ## Admin
 
 There is no public sign up. Create an account, then switch sign ups off in the

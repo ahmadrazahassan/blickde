@@ -27,6 +27,8 @@ import {
   SoftwareLogo,
   ComplianceChips,
   PromotionBanner,
+  PROMOTION_FOOTNOTE,
+  activePromotion,
   PriceDisclaimer,
   trialSummary,
 } from "@/components/ui/software";
@@ -234,6 +236,11 @@ export default async function SoftwarePage({ params }: { params: Promise<{ slug:
               <div className="text-center"><SectionLabel>Preise</SectionLabel><h2 className="t-display-2 mt-4">Die Tarife von {item.name}</h2></div>
               <div className="mx-auto mt-5 max-w-[64ch]"><PriceDisclaimer checkedAt={item.pricing_checked_at} className="justify-center text-center" /></div>
               <div className="mx-auto mt-4 max-w-[46rem]"><PromotionBanner item={item} /></div>
+              {activePromotion(item) ? (
+                <p className="mx-auto mt-3 max-w-[64ch] text-center text-[12.5px] leading-[1.6] text-[var(--color-ink-3)]">
+                  {PROMOTION_FOOTNOTE}
+                </p>
+              ) : null}
               <p className="mt-4 flex flex-wrap items-center justify-center gap-2 text-center text-[13.5px] text-[var(--color-ink-3)]">
                 <IconCalendar size={16} />
                 {item.pricing_checked_at ? (

@@ -293,8 +293,8 @@ export function ComparisonDuel({
         </Link>
 
         <p className="mt-3 text-center text-[11.5px] text-[var(--color-ink-4)]">
-          Grundlage: {reviewCountLabel(a.review_count).toLowerCase()} und{" "}
-          {reviewCountLabel(b.review_count).toLowerCase()}
+          Grundlage: {reviewCountLabel(a.review_count)} und{" "}
+          {reviewCountLabel(b.review_count)}
         </p>
       </div>
     </article>

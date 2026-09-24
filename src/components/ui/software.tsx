@@ -106,8 +106,15 @@ export function trialSummary(item: Software): { headline: string; detail: string
 
 /**
  * A running vendor offer. Only ever rendered from Software.promotion, which
- * carries the vendor's own wording and the end date the vendor names, and
- * only while that date is still in the future.
+ * carries the vendor's own wording, and only while the end date the vendor
+ * named is still in the future.
+ *
+ * The end date is no longer printed. A date on our page is a statement about
+ * the vendor's terms that only the vendor can keep current, so the offer is
+ * marked with an asterisk instead and the conditions are left where they
+ * belong: with the provider. The stored date still governs whether the offer
+ * is shown at all, because advertising an offer that has already ended would
+ * be a misleading commercial practice.
  */
 export function activePromotion(item: Software) {
   const promo = item.promotion;
@@ -117,6 +124,10 @@ export function activePromotion(item: Software) {
   }
   return promo;
 }
+
+/** The line the asterisk on a promotion points at. */
+export const PROMOTION_FOOTNOTE =
+  "* Laufzeit, Bedingungen und Verfügbarkeit nach Angaben des Anbieters. Maßgeblich sind die Konditionen auf der Anbieterseite zum Zeitpunkt Ihres Vertragsschlusses.";
 
 export function PromotionBanner({ item, className }: { item: Software; className?: string }) {
   const promo = activePromotion(item);
@@ -130,15 +141,14 @@ export function PromotionBanner({ item, className }: { item: Software; className
       )}
     >
       <IconTag size={16} />
-      {promo.label}
-      {promo.valid_until ? (
-        <span className="font-normal text-[var(--color-ink-3)]">
-          bis{" "}
-          <time data-numeric dateTime={promo.valid_until}>
-            {formatDate(promo.valid_until)}
-          </time>
-        </span>
-      ) : null}
+      <span>
+        {promo.label}
+        <span aria-hidden="true">*</span>
+        <span className="sr-only"> {PROMOTION_FOOTNOTE}</span>
+      </span>
+      <span className="font-normal text-[var(--color-ink-3)]">
+        Bedingungen beim Anbieter
+      </span>
     </p>
   );
 }
@@ -225,17 +235,8 @@ export function PriceBlock({ item }: { item: Software }) {
   const secondary: { label: string; headline: string; detail: React.ReactNode } = promo
     ? {
         label: "Aktion",
-        headline: promo.label,
-        detail: promo.valid_until ? (
-          <>
-            noch bis{" "}
-            <time data-numeric dateTime={promo.valid_until}>
-              {formatDate(promo.valid_until)}
-            </time>
-          </>
-        ) : (
-          "Laufende Aktion des Anbieters"
-        ),
+        headline: `${promo.label}*`,
+        detail: "* Laufzeit und Bedingungen laut Anbieter",
       }
     : item.trial_days
       ? {
@@ -414,7 +415,7 @@ export function SoftwareCard({ item, rank }: { item: Software; rank?: number }) 
           <div className="mt-1.5 flex flex-wrap items-center gap-x-2 gap-y-1">
             <StarRating value={item.overall_rating} reviewCount={item.review_count} size={16} />
             <span className="text-[12px] text-[var(--color-ink-3)]">
-              ({reviewCountLabel(item.review_count).toLowerCase()})
+              ({reviewCountLabel(item.review_count)})
             </span>
           </div>
         </div>
@@ -517,7 +518,7 @@ export function SoftwareRow({ item, rank }: { item: Software; rank?: number }) {
           <div className="flex items-center gap-2 md:justify-end">
             <StarRating value={item.overall_rating} reviewCount={item.review_count} />
             <span className="text-[12.5px] text-[var(--color-ink-3)]">
-              ({reviewCountLabel(item.review_count).toLowerCase()})
+              ({reviewCountLabel(item.review_count)})
             </span>
           </div>
 
@@ -585,7 +586,7 @@ export function CheckedCard({ item }: { item: Software }) {
    TopRatedCard. The podium form used in the Top Rated section.
    ========================================================================== */
 
-export function TopRatedCard({ item, rank }: { item: Software; rank?: number }) {
+export function TopRatedCard({ item, rank }: { item: Software; rank: number }) {
   const category = categoryById(item.category_id);
   const isFirst = rank === 1;
 
@@ -599,7 +600,7 @@ export function TopRatedCard({ item, rank }: { item: Software; rank?: number }) 
     >
       <span
         data-numeric
-        aria-label={rank ? `Platz ${rank}` : "Sage im Blick"}
+        aria-label={`Platz ${rank}`}
         className={cx(
           "inline-flex h-7 min-w-10 items-center justify-center rounded-[4px] px-3 text-[12px] font-semibold",
           isFirst
@@ -607,7 +608,7 @@ export function TopRatedCard({ item, rank }: { item: Software; rank?: number }) 
             : "bg-[var(--color-paper-2)] text-[var(--color-ink)]",
         )}
       >
-        {rank ? `Platz ${rank}` : "Sage im Blick"}
+        {`Platz ${rank}`}
       </span>
 
       <div className="mt-7 flex h-16 items-center justify-start">
