@@ -13,6 +13,19 @@ export const metadata: Metadata = {
   description:
     "Woher die Bewertungen auf Softwareblick stammen, über welchen Zeitraum sie erhoben wurden, wie sie geprüft werden und wie sich die Note berechnet.",
   alternates: { canonical: "/bewertungsmethodik" },
+  /*
+   * Bis der Herkunftsabschnitt geschrieben ist, steht die Seite nicht im
+   * Index, nicht in der Sitemap und nicht im Fußbereich. Sie ist über die
+   * Adresse erreichbar, damit sie fertiggestellt werden kann.
+   *
+   * Eine halbfertige Methodikseite ist schlechter als keine: sie lenkt die
+   * Aufmerksamkeit genau auf die Frage, die sie noch nicht beantwortet.
+   *
+   * ZUM FREISCHALTEN: Herkunftsabschnitt unten ausfüllen, dann robots hier
+   * entfernen, den Eintrag in src/app/sitemap.ts und den Link in
+   * src/components/site/footer.tsx wieder aufnehmen.
+   */
+  robots: { index: false, follow: false },
 };
 
 /*
