@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, Inter_Tight } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import { siteSettings } from "@/data/site";
 import { Header } from "@/components/site/header";
 import { Footer } from "@/components/site/footer";
@@ -92,6 +93,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <Footer />
           <ConsentBanner />
         </PublicChrome>
+        <Analytics />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(publisher) }}
