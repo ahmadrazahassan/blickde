@@ -11,14 +11,14 @@ import {
 } from "@/lib/queries";
 import { categoryById } from "@/data/categories";
 import { siteSettings } from "@/data/site";
-import { formatCount, formatDate, formatReviewCount } from "@/lib/format";
+import { formatCount, formatDate } from "@/lib/format";
 import { ButtonLink, SectionHead, Card } from "@/components/ui/primitives";
 import { TopRatedCard, PriceDisclaimer } from "@/components/ui/software";
 import { HeroSearch, NewsletterForm, ComparisonSelector } from "@/components/site/forms";
 import { ReviewMarquee } from "@/components/site/review-marquee";
 import { ComparisonPairs } from "@/components/site/comparison-pairs";
 import { SoftwareGrid } from "@/components/site/software-grid";
-import { IconArrowRight, IconReview, IconLedger, IconCalendar, IconCheck } from "@/components/icons";
+import { IconArrowRight } from "@/components/icons";
 
 export const revalidate = 3600;
 
@@ -95,56 +95,7 @@ export default async function HomePage() {
             <div className="mt-10 flex w-full justify-center">
               <HeroSearch chips={HERO_CHIPS} />
             </div>
-
-            <ul className="mt-12 flex flex-wrap items-center justify-center gap-x-7 gap-y-3 text-[13.5px] text-[var(--color-ink-2)]">
-              {[
-                `${formatCount(figures.softwareCount)} Programme im Bestand`,
-                `${formatReviewCount(figures.reviewCount)} Bewertungen veröffentlicht`,
-                "Keine gekauften Platzierungen",
-              ].map((line) => (
-                <li key={line} className="flex items-center gap-2">
-                  <IconCheck size={16} className="text-[var(--color-red)]" />
-                  {line}
-                </li>
-              ))}
-            </ul>
           </div>
-        </div>
-      </section>
-
-      {/* ============================================== 2. Trust rail ==== */}
-      <section aria-labelledby="kennzahlen" className="border-b border-[var(--color-rule)]">
-        <h2 id="kennzahlen" className="sr-only">
-          Kennzahlen der Redaktion
-        </h2>
-        <div className="container-page">
-          <dl className="grid grid-cols-1 gap-px overflow-hidden py-4 sm:grid-cols-2 lg:grid-cols-4">
-            <Figure
-              icon={<IconLedger size={20} />}
-              value={formatCount(figures.softwareCount)}
-              label="Programme im Bestand"
-              note={`Verteilt auf ${formatCount(figures.categoryCount)} Kategorien`}
-            />
-            <Figure
-              icon={<IconReview size={20} />}
-              value={formatReviewCount(figures.reviewCount)}
-              label="veröffentlichte Bewertungen"
-              note="Erfahrungen von Nutzerinnen und Nutzern"
-              className="sm:border-l sm:border-[var(--color-rule)]"
-            />
-            <Figure
-              icon={<IconCalendar size={20} />}
-              value={figures.lastCheckedAt ? formatDate(figures.lastCheckedAt) : "Offen"}
-              label="letzte Preisprüfung"
-              note={
-                figures.lastCheckedAt
-                  ? `Zuletzt geprüft am ${formatDate(figures.lastCheckedAt)}`
-                  : "Laufend aktualisiert"
-              }
-              className="lg:border-l lg:border-[var(--color-rule)]"
-            />
-            <Figure icon={<IconCheck size={20} />} value="4 Jahre" label="unabhängige Tests" note="Erfahrung aus redaktioneller Arbeit" className="sm:border-l sm:border-[var(--color-rule)]" />
-          </dl>
         </div>
       </section>
 
@@ -308,30 +259,3 @@ export default async function HomePage() {
   );
 }
 
-function Figure({
-  icon,
-  value,
-  label,
-  note,
-  className,
-}: {
-  icon: React.ReactNode;
-  value: string;
-  label: string;
-  note: string;
-  className?: string;
-}) {
-  return (
-    <div className={`flex flex-col items-center px-6 py-9 text-center ${className ?? ""}`}>
-      <span className="text-[var(--color-ink-4)]">{icon}</span>
-      <span
-        data-numeric
-        className="mt-3 font-[var(--font-display)] text-[2.5rem] font-semibold leading-none tracking-[-0.035em] text-[var(--color-ink)]"
-      >
-        {value}
-      </span>
-      <span className="t-micro mt-2.5 text-[var(--color-ink-3)]">{label}</span>
-      <span className="mt-2 text-[13px] leading-[1.5] text-[var(--color-ink-4)]">{note}</span>
-    </div>
-  );
-}

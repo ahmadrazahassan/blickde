@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { getSiteFigures, getSoftwareList } from "@/lib/queries";
-import { formatCount, formatDate, formatReviewCount } from "@/lib/format";
+import { getSoftwareList } from "@/lib/queries";
 import { siteSettings } from "@/data/site";
 import { PageHeader } from "@/components/ui/page";
 import { Card, ButtonLink, SectionHead } from "@/components/ui/primitives";
@@ -68,22 +67,10 @@ const GRUNDSAETZE = [
 ];
 
 export default async function AboutPage() {
-  const figures = await getSiteFigures();
-
   /* Die Finanzierungsangabe darf dem Affiliate-Hinweis nie widersprechen,
      deshalb kommt sie aus derselben Quelle: dem Bestand selbst. */
   const alle = await getSoftwareList({ sort: "name" });
   const mitVereinbarung = alle.some((item) => item.affiliate_url !== null);
-
-  const zahlen = [
-    { label: "Geprüfte Programme", value: formatCount(figures.softwareCount) },
-    { label: "Kategorien", value: formatCount(figures.categoryCount) },
-    { label: "Bewertungen", value: formatReviewCount(figures.reviewCount) },
-    {
-      label: "Preise zuletzt geprüft",
-      value: figures.lastCheckedAt ? formatDate(figures.lastCheckedAt) : "laufend",
-    },
-  ];
 
   return (
     <>
@@ -107,30 +94,6 @@ export default async function AboutPage() {
           </span>
         }
       />
-
-      {/* -------------------------------------------------------------- Zahlen */}
-      <section className="border-b border-[var(--color-rule)] bg-[var(--color-paper-2)]">
-        <div className="container-page">
-          <dl className="grid grid-cols-2 gap-px overflow-hidden lg:grid-cols-4">
-            {zahlen.map((zahl) => (
-              <div
-                key={zahl.label}
-                className="flex flex-col items-center px-4 py-8 text-center md:py-10"
-              >
-                <dd
-                  data-numeric
-                  className="font-[family-name:var(--font-display)] text-[clamp(1.6rem,3vw,2.3rem)] font-semibold leading-none tracking-[-0.03em] text-[var(--color-ink)]"
-                >
-                  {zahl.value}
-                </dd>
-                <dt className="mt-2.5 text-[12.5px] leading-[1.4] text-[var(--color-ink-3)]">
-                  {zahl.label}
-                </dt>
-              </div>
-            ))}
-          </dl>
-        </div>
-      </section>
 
       {/* ------------------------------------------------------------ Methode */}
       <section className="section border-b border-[var(--color-rule)]">

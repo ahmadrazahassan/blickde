@@ -1,9 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { siteSettings } from "@/data/site";
-import { getSiteFigures } from "@/lib/queries";
-import { formatCount, formatDate, formatReviewCount } from "@/lib/format";
-import { PageHeader, ProseSection, DataRows } from "@/components/ui/page";
+import { PageHeader, ProseSection } from "@/components/ui/page";
 import { Card } from "@/components/ui/primitives";
 
 export const revalidate = 3600;
@@ -11,20 +9,18 @@ export const revalidate = 3600;
 export const metadata: Metadata = {
   title: "Presse",
   description:
-    "Kurzprofil, Kennzahlen und Ansprechpartner für Redaktionen. Angaben zur Methode und zur Finanzierung für die Zitierung.",
+    "Kurzprofil und Ansprechpartner für Redaktionen. Angaben zur Methode und zur Finanzierung für die Zitierung.",
   alternates: { canonical: "/presse" },
 };
 
-export default async function PressPage() {
-  const figures = await getSiteFigures();
-
+export default function PressPage() {
   return (
     <>
       <PageHeader
         crumbs={[{ label: "Presse", href: "/presse" }]}
         micro="Presse"
         title="Angaben für Redaktionen"
-        lede="Kurzprofil, Kennzahlen und die Angaben, die Sie für eine Quellenangabe brauchen. Für Rückfragen erreichen Sie uns unter der unten genannten Adresse."
+        lede="Kurzprofil und die Angaben, die Sie für eine Quellenangabe brauchen. Für Rückfragen erreichen Sie uns unter der unten genannten Adresse."
       />
 
       <section className="section">
@@ -78,38 +74,6 @@ export default async function PressPage() {
 
             <aside className="lg:sticky lg:top-[89px] lg:self-start">
               <div className="flex flex-col gap-5">
-                <Card className="p-5">
-                  <h2 className="t-micro text-[var(--color-ink-3)]">Kennzahlen</h2>
-                  <DataRows
-                    className="mt-4"
-                    rows={[
-                      {
-                        label: "Geprüfte Programme",
-                        value: <span data-numeric>{formatCount(figures.softwareCount)}</span>,
-                      },
-                      {
-                        label: "Kategorien",
-                        value: <span data-numeric>{formatCount(figures.categoryCount)}</span>,
-                      },
-                      {
-                        label: "Veröffentlichte Bewertungen",
-                        value: <span data-numeric>{formatReviewCount(figures.reviewCount)}</span>,
-                      },
-                      {
-                        label: "Letzte Preisprüfung",
-                        value: figures.lastCheckedAt ? (
-                          <time data-numeric dateTime={figures.lastCheckedAt}>
-                            {formatDate(figures.lastCheckedAt)}
-                          </time>
-                        ) : (
-                          "nicht hinterlegt"
-                        ),
-                      },
-                      { label: "Verantwortlich", value: siteSettings.editorialResponsible.name },
-                    ]}
-                  />
-                </Card>
-
                 <Card className="p-5">
                   <h2 className="t-micro text-[var(--color-ink-3)]">Presseanfragen</h2>
                   <address className="mt-3 not-italic text-[14px] leading-[1.6] text-[var(--color-ink-2)]">
