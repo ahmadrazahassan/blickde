@@ -395,7 +395,7 @@ export function SoftwareCard({ item, rank }: { item: Software; rank?: number }) 
           <div className="flex items-start justify-between gap-2">
             <h3 className="font-[var(--font-display)] text-[1.1rem] font-semibold leading-tight tracking-[-0.018em] text-[var(--color-ink)]">
               <Link
-                href={`/software/${item.slug}`}
+                href={`/unternehmenssoftware-vergleichen/${item.slug}`}
                 className="transition-colors duration-200 hover:text-[var(--color-accent)]"
               >
                 {item.name}
@@ -449,7 +449,7 @@ export function SoftwareCard({ item, rank }: { item: Software; rank?: number }) 
       {/* Two prominent actions, always visible, never on hover only. */}
       <div className="mt-auto flex flex-col gap-2 pt-5">
         <Link
-          href={`/software/${item.slug}`}
+          href={`/unternehmenssoftware-vergleichen/${item.slug}`}
           className="gloss gloss-dark inline-flex min-h-11 w-full items-center justify-center gap-1.5 rounded-[7px] bg-[var(--color-accent)] px-3 py-2 text-center text-[14px] font-medium leading-tight text-white transition-colors duration-200 hover:bg-[var(--color-accent-hover)]"
         >
           Profil ansehen
@@ -496,7 +496,7 @@ export function SoftwareRow({ item, rank }: { item: Software; rank?: number }) {
         <div className="min-w-0">
           <h3 className="font-[var(--font-display)] text-[1.2rem] font-semibold tracking-[-0.02em] text-[var(--color-ink)]">
             <Link
-              href={`/software/${item.slug}`}
+              href={`/unternehmenssoftware-vergleichen/${item.slug}`}
               className="transition-colors duration-200 hover:text-[var(--color-accent)]"
             >
               {item.name}
@@ -526,7 +526,7 @@ export function SoftwareRow({ item, rank }: { item: Software; rank?: number }) {
 
           <div className="flex flex-col gap-2 sm:flex-row md:flex-col">
             <Link
-              href={`/software/${item.slug}`}
+              href={`/unternehmenssoftware-vergleichen/${item.slug}`}
               className="gloss gloss-dark inline-flex h-11 flex-1 items-center justify-center gap-1.5 rounded-[12px] bg-[var(--color-accent)] px-4 text-[14px] font-medium text-white transition-colors duration-200 hover:bg-[var(--color-accent-hover)]"
             >
               Profil ansehen
@@ -555,7 +555,7 @@ export function SoftwareRow({ item, rank }: { item: Software; rank?: number }) {
 
 export function CheckedCard({ item }: { item: Software }) {
   return (
-    <LinkCard href={`/software/${item.slug}`} className="flex h-full flex-col p-5 text-left">
+    <LinkCard href={`/unternehmenssoftware-vergleichen/${item.slug}`} className="flex h-full flex-col p-5 text-left">
       <div className="flex items-center gap-3.5">
         <SoftwareLogo item={item} size={44} />
         <h3 className="font-[var(--font-display)] text-[1.05rem] font-semibold tracking-[-0.018em] text-[var(--color-ink)] transition-colors duration-200 group-hover:text-[var(--color-accent)]">
@@ -617,7 +617,7 @@ export function TopRatedCard({ item, rank }: { item: Software; rank: number }) {
 
       <h3 className="mt-4 font-[var(--font-display)] text-[1.15rem] font-semibold tracking-[-0.018em] text-[var(--color-ink)]">
         <Link
-          href={`/software/${item.slug}`}
+          href={`/unternehmenssoftware-vergleichen/${item.slug}`}
           className="transition-colors duration-200 hover:text-[var(--color-accent)]"
         >
           {item.name}
@@ -650,7 +650,7 @@ export function TopRatedCard({ item, rank }: { item: Software; rank: number }) {
 
       <div className="mt-auto w-full pt-5">
         <Link
-          href={`/software/${item.slug}`}
+          href={`/unternehmenssoftware-vergleichen/${item.slug}`}
           className="gloss gloss-dark inline-flex min-h-11 w-full items-center justify-center gap-1.5 rounded-[7px] bg-[var(--color-accent)] px-4 py-2 text-[14px] font-medium text-white transition-colors duration-200 hover:bg-[var(--color-accent-hover)]"
         >
           Zum Profil

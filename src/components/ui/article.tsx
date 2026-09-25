@@ -8,7 +8,7 @@ import { StarRating } from "./rating";
 
 export function ArticleCard({ article }: { article: Article }) {
   return (
-    <LinkCard href={`/ratgeber/${article.slug}`} className="flex h-full flex-col overflow-hidden">
+    <LinkCard href={`/ratgeber-fuer-unternehmenssoftware/${article.slug}`} className="flex h-full flex-col overflow-hidden">
       <div className="flex flex-1 flex-col p-5">
         <Badge tone="neutral" className="self-start">
           {article.category_tag}
@@ -35,7 +35,7 @@ export function ArticleCard({ article }: { article: Article }) {
 export function ArticleRow({ article }: { article: Article }) {
   return (
     <li className="border-b border-[var(--color-rule)]">
-      <Link href={`/ratgeber/${article.slug}`} className="group block py-7">
+      <Link href={`/ratgeber-fuer-unternehmenssoftware/${article.slug}`} className="group block py-7">
         <div className="flex flex-wrap items-center gap-3">
           <Badge tone="neutral">{article.category_tag}</Badge>
           <span className="text-[12.5px] text-[var(--color-ink-3)]">
@@ -251,7 +251,7 @@ function InArticleSoftware({ item, reason }: { item: Software; reason: string })
         <SoftwareLogo item={item} size={48} />
         <div className="min-w-0 flex-1">
           <Link
-            href={`/software/${item.slug}`}
+            href={`/unternehmenssoftware-vergleichen/${item.slug}`}
             className="font-[var(--font-display)] text-[1.15rem] font-semibold tracking-[-0.018em] text-[var(--color-ink)] transition-colors duration-200 hover:text-[var(--color-red)]"
           >
             {item.name}
@@ -264,7 +264,7 @@ function InArticleSoftware({ item, reason }: { item: Software; reason: string })
             <PriceLine item={item} />
           </div>
           <Link
-            href={`/software/${item.slug}`}
+            href={`/unternehmenssoftware-vergleichen/${item.slug}`}
             className="mt-3 inline-flex items-center gap-1.5 text-[14px] font-medium text-[var(--color-ink)] no-underline transition-colors duration-200 hover:text-[var(--color-red)]"
           >
             Zum vollständigen Profil

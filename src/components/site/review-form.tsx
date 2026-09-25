@@ -182,13 +182,13 @@ export function ReviewForm({ softwareName, softwareSlug }: { softwareName: strin
               dass sie von einer Person stammt, die das Produkt tatsächlich eingesetzt hat. Bei
               Rückfragen melden wir uns unter der angegebenen Adresse. Änderungen und Löschungen
               können Sie jederzeit über die{" "}
-              <Link href="/kontakt" className="underline underline-offset-[3px]">
+              <Link href="/kontakt-zur-redaktion" className="underline underline-offset-[3px]">
                 Redaktionsadresse
               </Link>{" "}
               verlangen.
             </p>
             <Link
-              href={`/software/${softwareSlug}`}
+              href={`/unternehmenssoftware-vergleichen/${softwareSlug}`}
               className="mt-4 inline-flex text-[14px] text-[var(--color-red)] underline underline-offset-[3px]"
             >
               Zurück zum Profil von {softwareName}
@@ -365,7 +365,7 @@ export function ReviewForm({ softwareName, softwareSlug }: { softwareName: strin
           von Art. 6 Abs. 1 lit. b und lit. f DSGVO, dazu einen gesalzenen Hashwert Ihrer
           IP-Adresse zur Erkennung von Mehrfacheinreichungen, niemals die Adresse selbst. Ihre
           E-Mail-Adresse wird nicht veröffentlicht. Einzelheiten stehen in der{" "}
-          <Link href="/datenschutz" className="link-red">
+          <Link href="/datenschutzerklaerung-und-privatsphaere" className="link-red">
             Datenschutzerklärung
           </Link>
           .

@@ -43,7 +43,7 @@ export function RatingDashboard({ item, reviews, distribution }: { item: Softwar
     <div className="rounded-[20px] border border-[#e2e8f1] bg-white p-7">
       <h3 className="text-[16px] font-semibold text-[var(--color-ink)]">Unternehmensgröße der Bewertenden</h3>
       <div className="mt-5 flex flex-col items-center gap-5 sm:flex-row"><SizeDonut counts={sizeCounts} /><ul className="space-y-2">{SIZES.map((size, index) => <li key={size} className="flex items-center gap-2 text-[12px] text-[var(--color-ink-2)]"><span className="size-2 rounded-full" style={{ backgroundColor: COLORS[index] }} />{size} <span data-numeric className="font-semibold text-[var(--color-ink)]">{formatReviewCount(sizeCounts[index] ?? 0)}</span></li>)}</ul></div>
-      {total === 0 ? <p className="mt-5 text-[12px] leading-[1.5] text-[var(--color-ink-3)]">Die Diagramme füllen sich mit veröffentlichten Nutzerbewertungen. <Link href={`/software/${item.slug}/bewertungen/neu`} className="font-medium text-[var(--color-primary)] underline underline-offset-2">Erste Bewertung schreiben</Link></p> : null}
+      {total === 0 ? <p className="mt-5 text-[12px] leading-[1.5] text-[var(--color-ink-3)]">Die Diagramme füllen sich mit veröffentlichten Nutzerbewertungen. <Link href={`/unternehmenssoftware-vergleichen/${item.slug}/erfahrungen-und-bewertungen/bewertung-verfassen`} className="font-medium text-[var(--color-primary)] underline underline-offset-2">Erste Bewertung schreiben</Link></p> : null}
     </div>
   </div>;
 }

@@ -98,7 +98,7 @@ export function SearchDialog({
       event.preventDefault();
       const hit = hits[active];
       if (hit) go(hit.href);
-      else if (query.trim()) go(`/suche?q=${encodeURIComponent(query.trim())}`);
+      else if (query.trim()) go(`/software-und-wissen-durchsuchen?q=${encodeURIComponent(query.trim())}`);
     }
   }
 
@@ -199,7 +199,7 @@ export function SearchDialog({
         {query.trim().length >= 2 ? (
           <button
             type="button"
-            onClick={() => go(`/suche?q=${encodeURIComponent(query.trim())}`)}
+            onClick={() => go(`/software-und-wissen-durchsuchen?q=${encodeURIComponent(query.trim())}`)}
             className="flex w-full items-center justify-between gap-3 px-4 py-3.5 text-[14px] text-[var(--color-ink-2)] transition-colors duration-200 hover:bg-[var(--color-paper-2)] hover:text-[var(--color-ink)]"
           >
             Alle Treffer zu „{query.trim()}“ anzeigen

@@ -8,7 +8,7 @@ import { IconCheck, IconSearch } from "@/components/icons";
 import { sendContactAction, subscribeNewsletterAction } from "@/app/actions";
 
 /* ==========================================================================
-   Hero search. Submits to /suche, so it works without JavaScript.
+   Hero search. Submits to /software-und-wissen-durchsuchen, so it works without JavaScript.
    ========================================================================== */
 
 export function HeroSearch({ chips }: { chips: { label: string; href: string }[] }) {
@@ -17,7 +17,7 @@ export function HeroSearch({ chips }: { chips: { label: string; href: string }[]
       {/* One white plate carrying the field and the action, so both stay
           legible over the photograph without a fade behind them. */}
       <form
-        action="/suche"
+        action="/software-und-wissen-durchsuchen"
         method="get"
         role="search"
         className="flex flex-col gap-2 rounded-[9px] bg-white p-2 shadow-[var(--shadow-over)] sm:flex-row"
@@ -98,7 +98,7 @@ export function ComparisonSelector({
       return;
     }
     setError(null);
-    router.push(`/vergleich/${a}-vs-${b}`);
+    router.push(`/software-im-direktvergleich/${a}-vs-${b}`);
   }
 
   const optionGroups = groups.map((group) => (
@@ -313,7 +313,7 @@ export function NewsletterForm({
               E-Mail-Adresse zu diesem Zweck gespeichert wird. Die Einwilligung kann ich jederzeit
               über den Abmeldelink widerrufen. Einzelheiten in der{" "}
               <Link
-                href="/datenschutz"
+                href="/datenschutzerklaerung-und-privatsphaere"
                 className={inverse ? "text-white underline underline-offset-[3px]" : "link-accent"}
               >
                 Datenschutzerklärung
@@ -450,7 +450,7 @@ export function ContactForm() {
         lit. f DSGVO und löschen sie spätestens nach 24 Monaten. Zusätzlich speichern wir einen
         gesalzenen Hashwert Ihrer IP-Adresse zur Abwehr von Missbrauch, niemals die Adresse selbst.
         Einzelheiten in der{" "}
-        <Link href="/datenschutz" className="link-red">
+        <Link href="/datenschutzerklaerung-und-privatsphaere" className="link-red">
           Datenschutzerklärung
         </Link>
         .

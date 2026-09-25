@@ -9,12 +9,12 @@ export const metadata: Metadata = {
 };
 
 const SUGGESTIONS = [
-  { label: "Alle geprüften Programme", href: "/software" },
-  { label: "Kategorien im Überblick", href: "/kategorien" },
-  { label: "Zwei Programme vergleichen", href: "/vergleich" },
-  { label: "Ratgeber", href: "/ratgeber" },
-  { label: "E-Rechnungspflicht", href: "/e-rechnung" },
-  { label: "Glossar", href: "/glossar" },
+  { label: "Alle geprüften Programme", href: "/unternehmenssoftware-vergleichen" },
+  { label: "Kategorien im Überblick", href: "/software-kategorien" },
+  { label: "Zwei Programme vergleichen", href: "/software-im-direktvergleich" },
+  { label: "Ratgeber", href: "/ratgeber-fuer-unternehmenssoftware" },
+  { label: "E-Rechnungspflicht", href: "/e-rechnung-fuer-unternehmen" },
+  { label: "Glossar", href: "/software-fachbegriffe-erklaert" },
 ];
 
 export default function NotFound() {
@@ -31,7 +31,7 @@ export default function NotFound() {
             Suche finden Sie in der Regel schneller, was Sie gesucht haben.
           </p>
 
-          <form action="/suche" method="get" role="search" className="mt-8 flex max-w-[32rem] gap-2.5">
+          <form action="/software-und-wissen-durchsuchen" method="get" role="search" className="mt-8 flex max-w-[32rem] gap-2.5">
             <div className="flex-1">
               <label htmlFor="nf-q" className="sr-only">
                 Suchbegriff
@@ -77,7 +77,7 @@ export default function NotFound() {
 
           <p className="mt-8 text-[13.5px] leading-[1.6] text-[var(--color-ink-3)]">
             Sind Sie über einen Link von außerhalb hierher gekommen?{" "}
-            <Link href="/kontakt" className="link-red">
+            <Link href="/kontakt-zur-redaktion" className="link-red">
               Sagen Sie uns Bescheid
             </Link>
             , dann richten wir eine Weiterleitung ein.

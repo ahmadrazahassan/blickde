@@ -53,7 +53,7 @@ export default function Error({
           ) : null}
 
           <p className="mt-4 text-[13.5px] leading-[1.6] text-[var(--color-ink-3)]">
-            <Link href="/kontakt" className="link-red">
+            <Link href="/kontakt-zur-redaktion" className="link-red">
               Fehler melden
             </Link>
           </p>

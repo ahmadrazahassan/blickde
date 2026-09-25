@@ -94,7 +94,7 @@ export function SoftwareGrid({
           ) : null}
 
           <Link
-            href="/software"
+            href="/unternehmenssoftware-vergleichen"
             className="gloss gloss-dark inline-flex min-h-12 items-center justify-center gap-2 rounded-[7px] bg-[var(--color-accent)] px-6 py-2 text-center text-[15px] font-medium text-white transition-colors duration-200 hover:bg-[var(--color-accent-hover)]"
           >
             Zur vollständigen Übersicht

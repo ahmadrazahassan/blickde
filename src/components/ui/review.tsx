@@ -44,7 +44,7 @@ export function ReviewCard({
     <Card as="article" className={cx("flex h-full flex-col p-5", className)}>
       {software ? (
         <Link
-          href={`/software/${software.slug}`}
+          href={`/unternehmenssoftware-vergleichen/${software.slug}`}
           className="mb-4 flex items-center gap-2.5 border-b border-[var(--color-rule)] pb-4 transition-colors duration-200 hover:text-[var(--color-red)]"
         >
           <SoftwareLogo item={software} size={28} />
@@ -163,7 +163,7 @@ export function ReviewQuote({ review, software }: { review: Review; software: So
     <Card as="article" className="flex h-full flex-col p-5">
       <div className="flex items-center justify-between gap-3">
         <Link
-          href={`/software/${software.slug}`}
+          href={`/unternehmenssoftware-vergleichen/${software.slug}`}
           className="flex min-w-0 items-center gap-2.5 transition-colors duration-200 hover:text-[var(--color-red)]"
         >
           <SoftwareLogo item={software} size={26} />

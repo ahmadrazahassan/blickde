@@ -133,11 +133,11 @@ export function ConsentBanner() {
               Diese Seite setzt technisch notwendige Cookies, damit sie funktioniert. Darüber hinaus
               laden wir nichts, solange Sie nicht zustimmen. Ihre Entscheidung können Sie jederzeit
               über den Link „Cookie-Einstellungen“ im Fußbereich ändern. Einzelheiten stehen in der{" "}
-              <Link href="/datenschutz" className="link-red">
+              <Link href="/datenschutzerklaerung-und-privatsphaere" className="link-red">
                 Datenschutzerklärung
               </Link>{" "}
               und in der{" "}
-              <Link href="/cookie-richtlinie" className="link-red">
+              <Link href="/cookie-richtlinie-und-einstellungen" className="link-red">
                 Cookie-Richtlinie
               </Link>
               .

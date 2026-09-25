@@ -87,7 +87,7 @@ export async function sendNewsletterConfirmation(
   to: string,
   confirmToken: string,
 ): Promise<boolean> {
-  const link = `${serverEnv.siteUrl}/newsletter/bestaetigen?token=${encodeURIComponent(confirmToken)}`;
+  const link = `${serverEnv.siteUrl}/software-newsletter-anmelden/anmeldung-bestaetigen?token=${encodeURIComponent(confirmToken)}`;
 
   return send({
     to,
@@ -105,7 +105,7 @@ export async function sendNewsletterConfirmation(
       "diese Nachricht bitte einfach. Wir loeschen den Eintrag dann automatisch.",
       "",
       "Softwareblick",
-      `${serverEnv.siteUrl}/impressum`,
+      `${serverEnv.siteUrl}/anbieterkennzeichnung-und-impressum`,
     ].join("\n"),
   });
 }
@@ -114,7 +114,7 @@ export async function sendNewsletterWelcome(
   to: string,
   unsubscribeToken: string,
 ): Promise<boolean> {
-  const link = `${serverEnv.siteUrl}/newsletter/abmelden?token=${encodeURIComponent(unsubscribeToken)}`;
+  const link = `${serverEnv.siteUrl}/software-newsletter-anmelden/newsletter-abmelden?token=${encodeURIComponent(unsubscribeToken)}`;
 
   return send({
     to,
@@ -130,7 +130,7 @@ export async function sendNewsletterWelcome(
       link,
       "",
       "Softwareblick",
-      `${serverEnv.siteUrl}/impressum`,
+      `${serverEnv.siteUrl}/anbieterkennzeichnung-und-impressum`,
     ].join("\n"),
   });
 }

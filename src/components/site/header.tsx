@@ -10,11 +10,11 @@ import { SearchDialog } from "./search-dialog";
 import type { SearchHit } from "@/lib/types";
 
 const NAV = [
-  { label: "Software", href: "/software" },
-  { label: "Vergleich", href: "/vergleich" },
-  { label: "Kategorien", href: "/kategorien" },
-  { label: "Ratgeber", href: "/ratgeber" },
-  { label: "E-Rechnung", href: "/e-rechnung" },
+  { label: "Programme", href: "/unternehmenssoftware-vergleichen" },
+  { label: "Vergleiche", href: "/software-im-direktvergleich" },
+  { label: "Bereiche", href: "/software-kategorien" },
+  { label: "Praxiswissen", href: "/ratgeber-fuer-unternehmenssoftware" },
+  { label: "E-Rechnungen", href: "/e-rechnung-fuer-unternehmen" },
 ];
 
 /**
@@ -66,10 +66,10 @@ export function Header({ searchAction }: { searchAction: (q: string) => Promise<
 
       <header className={cx("inset-x-0 top-0 z-40 h-[68px] bg-transparent", pathname === "/" ? "absolute" : "relative")}>
         <div className="container-page h-full">
-          <div className="grid h-full grid-cols-[1fr_auto] items-center gap-5 lg:grid-cols-[1fr_auto_1fr]">
+          <div className="grid h-full grid-cols-[1fr_auto] items-center gap-5 xl:grid-cols-[1fr_auto_1fr]">
               <Brand />
 
-              <nav aria-label="Hauptnavigation" className="hidden lg:block">
+              <nav aria-label="Hauptnavigation" className="hidden xl:block">
                 <ul className="flex items-center gap-1">
                   {NAV.map((item) => (
                     <li key={item.href}>
@@ -92,12 +92,12 @@ export function Header({ searchAction }: { searchAction: (q: string) => Promise<
 
             <div className="flex items-center justify-end gap-2">
               <button type="button" onClick={() => setSearchOpen(true)} className="inline-flex size-10 items-center justify-center rounded-[6px] text-[var(--color-ink-2)] transition-colors hover:bg-[var(--color-paper-2)]" aria-label="Suche öffnen"><IconSearch size={18} /></button>
-              <Link href="/kontakt" className="hidden h-9 items-center justify-center rounded-[5px] border border-[var(--color-rule)] px-4 text-[12px] font-medium text-[var(--color-accent)] transition-colors hover:bg-[var(--color-accent-tint)] sm:inline-flex">Kontakt</Link>
+              <Link href="/kontakt-zur-redaktion" className="hidden h-9 items-center justify-center rounded-[5px] border border-[var(--color-rule)] px-4 text-[12px] font-medium text-[var(--color-accent)] transition-colors hover:bg-[var(--color-accent-tint)] sm:inline-flex">Anfragen</Link>
               <Link
-                href="/software-eintragen"
-                className="gloss gloss-dark hidden h-9 items-center gap-2 rounded-[6px] bg-[var(--color-primary)] px-4 text-[12px] font-medium text-white transition-colors hover:bg-[var(--color-primary-hover)] lg:inline-flex"
+                href="/softwareprodukt-zur-pruefung-einreichen"
+                className="gloss gloss-dark hidden h-9 items-center gap-2 rounded-[6px] bg-[var(--color-primary)] px-4 text-[12px] font-medium text-white transition-colors hover:bg-[var(--color-primary-hover)] xl:inline-flex"
               >
-                Software eintragen
+                Produkt vorschlagen
               </Link>
 
               <button
@@ -105,7 +105,7 @@ export function Header({ searchAction }: { searchAction: (q: string) => Promise<
                 onClick={() => setMenuOpen((open) => !open)}
                 aria-expanded={menuOpen}
                 aria-controls="mobile-nav"
-                className="inline-flex size-10 items-center justify-center rounded-[6px] border border-[var(--color-rule)] text-[var(--color-ink)] lg:hidden"
+                className="inline-flex size-10 items-center justify-center rounded-[6px] border border-[var(--color-rule)] text-[var(--color-ink)] xl:hidden"
               >
                 {menuOpen ? <IconClose size={20} /> : <IconMenu size={20} />}
                 <span className="sr-only">{menuOpen ? "Menü schließen" : "Menü öffnen"}</span>
@@ -118,7 +118,7 @@ export function Header({ searchAction }: { searchAction: (q: string) => Promise<
       {menuOpen ? (
         <div
           id="mobile-nav"
-          className="fixed inset-x-0 bottom-0 top-0 z-30 overflow-y-auto bg-white pt-24 lg:hidden"
+          className="fixed inset-x-0 bottom-0 top-0 z-30 overflow-y-auto bg-white pt-24 xl:hidden"
         >
           <nav aria-label="Hauptnavigation, mobil" className="container-page pb-10">
             <ul className="flex flex-col gap-2">
@@ -142,17 +142,17 @@ export function Header({ searchAction }: { searchAction: (q: string) => Promise<
 
             <div className="mt-6 flex flex-col gap-3 border-t border-[var(--color-rule)] pt-6">
               <Link
-                href="/software-eintragen"
+                href="/softwareprodukt-zur-pruefung-einreichen"
                 className="gloss gloss-dark inline-flex h-12 items-center justify-center gap-2 rounded-[7px] bg-[var(--color-primary)] px-5 text-[15px] font-medium text-white"
               >
-                Software eintragen
+                Produkt vorschlagen
                 <IconArrowRight size={16} />
               </Link>
               <Link
-                href="/kontakt"
+                href="/kontakt-zur-redaktion"
                 className="gloss gloss-light inline-flex h-12 items-center justify-center rounded-[7px] bg-[var(--color-secondary)] px-5 text-[15px] font-medium text-[#07316f]"
               >
-                Kontakt
+                Anfragen
               </Link>
             </div>
           </nav>

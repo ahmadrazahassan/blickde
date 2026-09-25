@@ -72,7 +72,7 @@ function ProductSide({ item, leads }: { item: Software; leads: boolean }) {
 
       <h4 className="mt-2.5 line-clamp-2 font-[var(--font-display)] text-[14px] font-semibold leading-tight tracking-[-0.018em] text-[var(--color-ink)]">
         <Link
-          href={`/software/${item.slug}`}
+          href={`/unternehmenssoftware-vergleichen/${item.slug}`}
           className="transition-colors duration-200 hover:text-[var(--color-primary)]"
         >
           {item.name}
@@ -154,7 +154,7 @@ export function ComparisonPairs({ software }: { software: Software[] }) {
               </div>
 
               <Link
-                href={`/vergleich/${a.slug}-vs-${b.slug}`}
+                href={`/software-im-direktvergleich/${a.slug}-vs-${b.slug}`}
                 className="gloss gloss-dark mt-4 inline-flex min-h-11 items-center justify-center gap-1.5 rounded-[7px] bg-[var(--color-primary)] px-4 text-[13.5px] font-semibold text-white transition-colors duration-200 hover:bg-[var(--color-primary-hover)]"
               >
                 Vergleich ansehen

@@ -16,6 +16,7 @@ import { ButtonLink, SectionHead, Card } from "@/components/ui/primitives";
 import { TopRatedCard, PriceDisclaimer } from "@/components/ui/software";
 import { HeroSearch, NewsletterForm, ComparisonSelector } from "@/components/site/forms";
 import { ReviewMarquee } from "@/components/site/review-marquee";
+import { PartnerMarquee } from "@/components/site/partner-marquee";
 import { ComparisonPairs } from "@/components/site/comparison-pairs";
 import { SoftwareGrid } from "@/components/site/software-grid";
 import { IconArrowRight } from "@/components/icons";
@@ -30,11 +31,11 @@ export const metadata: Metadata = {
 };
 
 const HERO_CHIPS = [
-  { label: "Buchhaltung", href: "/kategorie/buchhaltungssoftware" },
-  { label: "Lohnabrechnung", href: "/kategorie/lohnabrechnung" },
-  { label: "HR-Software", href: "/kategorie/hr-software" },
-  { label: "CRM", href: "/kategorie/crm-software" },
-  { label: "ERP", href: "/kategorie/erp-software" },
+  { label: "Buchhaltung", href: "/software-kategorien/buchhaltungssoftware" },
+  { label: "Lohnabrechnung", href: "/software-kategorien/lohnabrechnung" },
+  { label: "HR-Software", href: "/software-kategorien/hr-software" },
+  { label: "CRM", href: "/software-kategorien/crm-software" },
+  { label: "ERP", href: "/software-kategorien/erp-software" },
 ];
 
 export default async function HomePage() {
@@ -98,6 +99,8 @@ export default async function HomePage() {
           </div>
         </div>
       </section>
+
+      <PartnerMarquee />
 
       {/* ============================================ 3. Software ======== */}
       <section id="software" className="section scroll-mt-24 bg-white">
@@ -165,7 +168,7 @@ export default async function HomePage() {
           )}
 
           <div className="mt-12 flex justify-center">
-            <ButtonLink href="/software?sortierung=note" variant="secondary" size="lg">
+            <ButtonLink href="/unternehmenssoftware-vergleichen?sortierung=note" variant="secondary" size="lg">
               Vollständige Rangliste
               <IconArrowRight size={18} />
             </ButtonLink>
@@ -212,7 +215,7 @@ export default async function HomePage() {
           />
           <div className="mt-14 grid gap-5 lg:grid-cols-[1.05fr_0.95fr]">
             {guides[0] ? (
-              <Link href={`/ratgeber/${guides[0].slug}`} className="group flex min-h-[360px] flex-col rounded-[12px] border border-[var(--color-rule)] bg-[#f8f7ed] p-7 transition-colors hover:border-[var(--color-accent)] md:p-9">
+              <Link href={`/ratgeber-fuer-unternehmenssoftware/${guides[0].slug}`} className="group flex min-h-[360px] flex-col rounded-[12px] border border-[var(--color-rule)] bg-[#f8f7ed] p-7 transition-colors hover:border-[var(--color-accent)] md:p-9">
                 <p className="t-micro text-[var(--color-accent)]">Im Fokus · {guides[0].category_tag}</p>
                 <h3 className="mt-10 max-w-[20ch] font-[var(--font-display)] text-[clamp(1.6rem,2.6vw,2.25rem)] font-semibold leading-[1.12] tracking-[-0.03em] text-[var(--color-ink)] group-hover:text-[var(--color-accent)]">{guides[0].title}</h3>
                 <p className="mt-4 max-w-[52ch] text-[15px] leading-[1.65] text-[var(--color-ink-2)]">{guides[0].excerpt}</p>
@@ -221,7 +224,7 @@ export default async function HomePage() {
             ) : null}
             <div className="flex flex-col rounded-[12px] border border-[var(--color-rule)] bg-white px-6 md:px-8">
               {guides.slice(1).map((article, index) => (
-                <Link key={article.id} href={`/ratgeber/${article.slug}`} className="group flex flex-1 gap-4 border-b border-[var(--color-rule)] py-6 last:border-b-0">
+                <Link key={article.id} href={`/ratgeber-fuer-unternehmenssoftware/${article.slug}`} className="group flex flex-1 gap-4 border-b border-[var(--color-rule)] py-6 last:border-b-0">
                   <span data-numeric className="pt-1 text-[12px] font-semibold text-[var(--color-red)]">0{index + 2}</span>
                   <div className="flex-1"><p className="t-micro text-[var(--color-ink-3)]">{article.category_tag}</p><h3 className="mt-2.5 font-[var(--font-display)] text-[18px] font-semibold leading-[1.3] text-[var(--color-ink)] transition-colors group-hover:text-[var(--color-accent)]">{article.title}</h3><p className="mt-2 text-[12px] text-[var(--color-ink-3)]">{formatDate(article.published_date)} · {article.read_time_minutes} Min. Lesezeit</p></div>
                   <span aria-hidden="true" className="text-[18px] text-[var(--color-accent)]">↗</span>
@@ -231,7 +234,7 @@ export default async function HomePage() {
           </div>
 
           <div className="mt-12 flex justify-center">
-            <ButtonLink href="/ratgeber" variant="secondary" size="lg">
+            <ButtonLink href="/ratgeber-fuer-unternehmenssoftware" variant="secondary" size="lg">
               Alle Beiträge
               <IconArrowRight size={18} />
             </ButtonLink>

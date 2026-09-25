@@ -608,9 +608,9 @@ interface SearchRow {
 }
 
 const HREF: Record<string, (slug: string) => string> = {
-  software: (slug) => `/software/${slug}`,
-  article: (slug) => `/ratgeber/${slug}`,
-  category: (slug) => `/kategorie/${slug}`,
+  software: (slug) => `/unternehmenssoftware-vergleichen/${slug}`,
+  article: (slug) => `/ratgeber-fuer-unternehmenssoftware/${slug}`,
+  category: (slug) => `/software-kategorien/${slug}`,
 };
 
 /**
@@ -651,7 +651,7 @@ export async function search(query: string, limit = 20): Promise<SearchHit[]> {
         kind: "glossar",
         id: entry.slug,
         title: entry.term,
-        href: `/glossar#${entry.slug}`,
+        href: `/software-fachbegriffe-erklaert#${entry.slug}`,
         snippet: entry.short,
         rank,
       });

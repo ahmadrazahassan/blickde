@@ -261,7 +261,7 @@ export async function subscribeNewsletterAction(formData: FormData): Promise<For
   );
 }
 
-/** Consumes a confirmation token. Called from /newsletter/bestaetigen. */
+/** Consumes a confirmation token. Called from /software-newsletter-anmelden/anmeldung-bestaetigen. */
 export async function confirmNewsletterAction(token: string): Promise<FormResult> {
   const clean = token.trim();
   if (clean.length < 10) {
@@ -458,7 +458,7 @@ export async function recordConsentAction(input: {
 
 /** Called after a moderation decision so the public pages pick it up. */
 export async function revalidateProduct(slug: string): Promise<void> {
-  revalidatePath(`/software/${slug}`);
-  revalidatePath(`/software/${slug}/bewertungen`);
+  revalidatePath(`/unternehmenssoftware-vergleichen/${slug}`);
+  revalidatePath(`/unternehmenssoftware-vergleichen/${slug}/erfahrungen-und-bewertungen`);
   revalidatePath("/");
 }

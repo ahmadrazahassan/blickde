@@ -154,7 +154,7 @@ function DuelCard({
 
       <h4 className="mt-2.5 line-clamp-2 font-[var(--font-display)] text-[14.5px] font-semibold leading-tight tracking-[-0.018em] text-[var(--color-ink)]">
         <Link
-          href={`/software/${item.slug}`}
+          href={`/unternehmenssoftware-vergleichen/${item.slug}`}
           className="transition-colors duration-200 hover:text-[var(--color-accent)]"
         >
           {item.name}
@@ -285,7 +285,7 @@ export function ComparisonDuel({
         </p>
 
         <Link
-          href={`/vergleich/${pair}`}
+          href={`/software-im-direktvergleich/${pair}`}
           className="gloss gloss-dark mt-5 inline-flex h-11 w-full items-center justify-center gap-1.5 rounded-[7px] bg-[var(--color-primary)] px-4 text-[14px] font-medium text-white transition-colors duration-200 hover:bg-[var(--color-primary-hover)]"
         >
           Vollständigen Vergleich lesen

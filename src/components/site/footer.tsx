@@ -5,10 +5,10 @@ import { Brand } from "./brand";
 import { CookieSettingsButton } from "./consent-banner";
 
 const columns = [
-  { title: "Software", links: [["Alle Programme", "/software"], ["Buchhaltung", "/kategorie/buchhaltungssoftware"], ["Lohnabrechnung", "/kategorie/lohnabrechnung"], ["HR-Software", "/kategorie/hr-software"]] },
-  { title: "Vergleichen", links: [["Direktvergleich", "/vergleich"], ["Kategorien", "/kategorien"], ["Bestbewertet", "/software?sortierung=note"], ["Software eintragen", "/software-eintragen"]] },
-  { title: "Wissen", links: [["Ratgeber", "/ratgeber"], ["Glossar", "/glossar"], ["E-Rechnung", "/e-rechnung"], ["Newsletter", "/newsletter"]] },
-  { title: "Softwareblick", links: [["Über uns", "/ueber-uns"], ["Redaktion", "/redaktionsrichtlinien"], ["Kontakt", "/kontakt"], ["Presse", "/presse"]] },
+  { title: "Programme", links: [["Software entdecken", "/unternehmenssoftware-vergleichen"], ["Finanzbuchhaltung", "/software-kategorien/buchhaltungssoftware"], ["Gehaltsabrechnung", "/software-kategorien/lohnabrechnung"], ["Personalsoftware", "/software-kategorien/hr-software"]] },
+  { title: "Auswahlhilfen", links: [["Programme gegenüberstellen", "/software-im-direktvergleich"], ["Softwarebereiche", "/software-kategorien"], ["Top bewertet", "/unternehmenssoftware-vergleichen?sortierung=note"], ["Produkt vorschlagen", "/softwareprodukt-zur-pruefung-einreichen"]] },
+  { title: "Praxiswissen", links: [["Wissensartikel", "/ratgeber-fuer-unternehmenssoftware"], ["Fachbegriffe", "/software-fachbegriffe-erklaert"], ["Elektronische Rechnung", "/e-rechnung-fuer-unternehmen"], ["E-Mail-Updates", "/software-newsletter-anmelden"]] },
+  { title: "Das Unternehmen", links: [["Wer wir sind", "/ueber-softwareblick-und-unsere-mission"], ["Unsere Redaktion", "/redaktionelle-richtlinien-und-pruefprozess"], ["Kontakt aufnehmen", "/kontakt-zur-redaktion"], ["Medieninformationen", "/presse-und-medieninformationen"]] },
 ] as const;
 
 export async function Footer() {
@@ -25,7 +25,7 @@ export async function Footer() {
             </div>
           ))}
           <div>
-            <h2 className="text-[10px] font-semibold uppercase tracking-[0.14em] text-white/45">Kontakt</h2>
+            <h2 className="text-[10px] font-semibold uppercase tracking-[0.14em] text-white/45">Erreichbarkeit</h2>
             <div className="mt-4 border-l border-white/12 pl-3">
               <a href={`mailto:${siteSettings.operator.email}`} className="block break-all text-[14px] leading-[1.5] text-white/80 hover:text-white">{siteSettings.operator.email}</a>
 
@@ -49,12 +49,12 @@ export async function Footer() {
                   {siteSettings.operator.country}
                 </span>
               </address>
-              <Link href="/software" className="gloss gloss-dark mt-5 inline-flex min-h-9 items-center rounded-[7px] bg-[var(--color-primary)] px-4 text-[11px] font-semibold uppercase tracking-[0.06em] text-white hover:bg-[var(--color-primary-hover)]">Software finden ↗</Link>
-              <Link href="/kontakt" className="gloss gloss-light mt-2 inline-flex min-h-9 items-center rounded-[7px] bg-[var(--color-secondary)] px-4 text-[11px] font-semibold uppercase tracking-[0.06em] text-[#07316f] hover:bg-[#bce7ff]">Kontakt ↗</Link>
+              <Link href="/unternehmenssoftware-vergleichen" className="gloss gloss-dark mt-5 inline-flex min-h-9 items-center rounded-[7px] bg-[var(--color-primary)] px-4 text-[11px] font-semibold uppercase tracking-[0.06em] text-white hover:bg-[var(--color-primary-hover)]">Programme entdecken ↗</Link>
+              <Link href="/kontakt-zur-redaktion" className="gloss gloss-light mt-2 inline-flex min-h-9 items-center rounded-[7px] bg-[var(--color-secondary)] px-4 text-[11px] font-semibold uppercase tracking-[0.06em] text-[#07316f] hover:bg-[#bce7ff]">Anfrage senden ↗</Link>
               <ul className="mt-5 space-y-1.5 text-[11px] text-white/45">
-                <li><Link href="/nutzungsbedingungen" className="hover:text-white">Nutzungsbedingungen</Link></li>
-                <li><Link href="/datenschutz" className="hover:text-white">Datenschutz</Link></li>
-                <li><Link href="/barrierefreiheit" className="hover:text-white">Barrierefreiheit</Link></li>
+                <li><Link href="/nutzungsbedingungen-der-website" className="hover:text-white">Regeln zur Nutzung</Link></li>
+                <li><Link href="/datenschutzerklaerung-und-privatsphaere" className="hover:text-white">Datenschutzerklärung</Link></li>
+                <li><Link href="/erklaerung-zur-barrierefreiheit" className="hover:text-white">Zugänglichkeit</Link></li>
               </ul>
             </div>
           </div>
@@ -64,10 +64,10 @@ export async function Footer() {
           <Brand inverse large />
         </div>
         <div className="flex flex-col gap-3 py-5 text-[11px] leading-[1.5] text-white/45 md:flex-row md:items-center md:justify-between">
-          <p>© {new Date().getFullYear()} {siteSettings.operator.company} · {siteSettings.operator.city}. <Link href="/affiliate-hinweis" className="hover:text-white">Affiliate-Hinweis</Link></p>
+          <p>© {new Date().getFullYear()} {siteSettings.operator.company} · {siteSettings.operator.city}. <Link href="/transparenz-zu-affiliate-links" className="hover:text-white">Hinweis zu Partnerlinks</Link></p>
           <div className="flex flex-wrap gap-x-5 gap-y-2">
-            <Link href="/impressum" className="hover:text-white">Impressum</Link>
-            <Link href="/datenschutz" className="hover:text-white">Datenschutz</Link>
+            <Link href="/anbieterkennzeichnung-und-impressum" className="hover:text-white">Anbieterkennzeichnung</Link>
+            <Link href="/datenschutzerklaerung-und-privatsphaere" className="hover:text-white">Datenschutzerklärung</Link>
             <CookieSettingsButton className="!text-white/45 hover:!text-white" />
           </div>
         </div>

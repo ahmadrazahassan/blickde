@@ -18,7 +18,7 @@ function MarqueeCard({ review, preview }: { review: WallReview; preview: boolean
     <article className="review-glass flex min-h-[205px] w-full flex-col rounded-[24px] p-5">
       <div className="flex items-center justify-between gap-3">
         <Link
-          href={`/software/${review.software.slug}`}
+          href={`/unternehmenssoftware-vergleichen/${review.software.slug}`}
           className="flex min-w-0 items-center gap-3 transition-opacity duration-200 hover:opacity-80"
         >
           <SoftwareLogo item={review.software} size={32} />
@@ -130,7 +130,7 @@ export function ReviewMarquee({ reviews, software = [], preview = false }: { rev
         </div>
         <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {software.map((item, index) => (
-            <Link key={item.id} href={`/software/${item.slug}/bewertungen/neu`} className="group flex min-h-48 flex-col rounded-[10px] border border-white/75 bg-white/95 p-6 shadow-[0_18px_48px_-32px_rgba(23,44,60,.4)] transition-transform duration-200 hover:-translate-y-1">
+            <Link key={item.id} href={`/unternehmenssoftware-vergleichen/${item.slug}/erfahrungen-und-bewertungen/bewertung-verfassen`} className="group flex min-h-48 flex-col rounded-[10px] border border-white/75 bg-white/95 p-6 shadow-[0_18px_48px_-32px_rgba(23,44,60,.4)] transition-transform duration-200 hover:-translate-y-1">
               <div className="flex items-center justify-between gap-4"><SoftwareLogo item={item} size={42} /><span data-numeric className="text-[12px] text-[var(--color-ink-4)]">0{index + 1}</span></div>
               <h3 className="mt-6 font-[var(--font-display)] text-[17px] font-semibold text-[var(--color-ink)]">{item.name}</h3>
               <p className="mt-1 text-[13px] text-[var(--color-ink-3)]">Ihre Erfahrung hilft bei der Auswahl.</p>
@@ -163,7 +163,7 @@ export function ReviewMarquee({ reviews, software = [], preview = false }: { rev
       </div>
       <div className="mt-5 flex flex-col items-center gap-2 text-center">
         <p className="text-[13px] text-white/90">{preview ? "Echte Bewertungen erscheinen hier, sobald sie geprüft und veröffentlicht sind." : "Erfahrungen von Nutzerinnen und Nutzern aus dem Softwarealltag."}</p>
-        <Link href="/software" className="gloss gloss-light inline-flex min-h-11 items-center gap-2 rounded-[7px] bg-[var(--color-secondary)] px-5 py-2 text-[13px] font-semibold text-[#07316f] transition-colors hover:bg-[#bce7ff]">Programm entdecken <span aria-hidden="true">↗</span></Link>
+        <Link href="/unternehmenssoftware-vergleichen" className="gloss gloss-light inline-flex min-h-11 items-center gap-2 rounded-[7px] bg-[var(--color-secondary)] px-5 py-2 text-[13px] font-semibold text-[#07316f] transition-colors hover:bg-[#bce7ff]">Programm entdecken <span aria-hidden="true">↗</span></Link>
       </div>
     </div>
   );
